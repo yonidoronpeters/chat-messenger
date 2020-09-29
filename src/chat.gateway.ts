@@ -12,11 +12,13 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   users = 0;
 
   async handleConnection() {
+    console.log('new user connected')
     this.users++;
     this.server.emit('users', this.users);
   }
 
   async handleDisconnect() {
+    console.log('user disconnected')
     this.users--;
     this.server.emit('users', this.users);
 
