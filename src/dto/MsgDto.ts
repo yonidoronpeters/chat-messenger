@@ -1,0 +1,3 @@
+interface MsgDto {
+  message: string,
+}
