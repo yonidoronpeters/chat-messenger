@@ -10,7 +10,7 @@ async function bootstrap() {
   app.enableCors();
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
-  await app.listen(process.env.PORT || 3001);
+  await app.listen(process.env.PORT || 3005);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

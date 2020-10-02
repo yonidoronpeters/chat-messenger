@@ -25,8 +25,8 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('chat')
-  async onChat(client, message) {
-    console.log(`received message ${message}`)
+  async onChat(client, message: MsgDto) {
+    console.log(`received message ${JSON.stringify(message)}`)
     this.appService.postMessage(message)
     client.broadcast.emit('chat', message);
   }

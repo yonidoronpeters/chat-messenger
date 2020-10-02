@@ -33,7 +33,7 @@
   <div class="messages">
     <ul>
     {{#each messages}}
-      <li>{{ this }}</li>
+      <li>{{ this.username }}: {{ this.message }}</li>
     {{/each}}
     </ul>
   </div>

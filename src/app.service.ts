@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  private messages: string[] = []
+  private messages: MsgDto[] = []
   welcome(): string {
     return 'Welcome to the messenger app. beep beep. churp..';
   }
 
-  postMessage(message: string) {
+  postMessage(message: MsgDto) {
     // persist msg
     this.messages.push(message)
     console.log(this.messages);
