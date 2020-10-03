@@ -30,6 +30,7 @@
     "@nestjs/platform-socket.io": "^7.4.4",
     "@nestjs/typeorm": "^7.1.4",
     "@nestjs/websockets": "^7.4.4",
+    "@nestjs/config": "^0.5.0",
     "hbs": "^4.1.1",
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
