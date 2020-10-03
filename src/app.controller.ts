@@ -1,6 +1,12 @@
-import { BadRequestException, Body, Controller, Get, HttpStatus, Post, Render, Res } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Post,
+  Render,
+} from '@nestjs/common';
 import { AppService } from './app.service';
-import { Response } from 'express';
 
 @Controller()
 export class AppController {
@@ -9,18 +15,21 @@ export class AppController {
   @Get()
   @Render('message-form')
   root() {
-    return { title: this.appService.welcome(), messages: this.appService.getMessages() };
+    return {
+      title: this.appService.welcome(),
+      messages: this.appService.getMessages(),
+    };
   }
 
   @Post('form')
   @Render('message-form')
-  sendMessage(@Body() dto: MsgDto) {
-    this.appService.postMessage(dto);
-    return this.root()
+  async sendMessage(@Body() dto: MsgDto) {
+    await this.appService.saveMessage(dto);
+    return this.root();
   }
 
   @Get('messages')
-  getMessages(): MsgDto[] {
+  async getMessages(): Promise<MsgDto[]> {
     return this.appService.getMessages();
   }
 

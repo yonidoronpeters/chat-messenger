@@ -1,9 +1,9 @@
 interface MsgDto {
-  username: string
-  message: string,
-  datetime: Date,
+  username: string;
+  text: string;
+  datetime: Date;
 }
 
 interface UserDto {
-  name: string,
+  name: string;
 }
