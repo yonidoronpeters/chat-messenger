@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Render } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { MessageService } from './message.service';
 
 @Controller()
@@ -8,13 +8,6 @@ export class MessageController {
   @Get()
   root(): string {
     return 'Please visit https://cryptochatter-client.herokuapp.com to start chatting';
-  }
-
-  @Post('form')
-  @Render('message-form')
-  async sendMessage(@Body() dto: MsgDto) {
-    await this.appService.saveMessage(dto);
-    return this.root();
   }
 
   @Get('messages')
