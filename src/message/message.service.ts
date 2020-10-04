@@ -1,27 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Message } from './entity/message.entity';
+import { Message } from '../entity/message.entity';
 import { MoreThanOrEqual, Repository } from 'typeorm';
 
 @Injectable()
-export class AppService {
+export class MessageService {
   constructor(
     @InjectRepository(Message)
     private readonly messageRepo: Repository<Message>,
   ) {}
+  // TODO make this configurable
   private days = 3;
-
-  welcome(): string {
-    return 'Welcome to the messenger app. beep beep. churp..';
-  }
 
   async saveMessage(message: MsgDto): Promise<MsgDto> {
     console.debug('Persisting message', message);
-    const messageEntity = this.messageRepo.create(message);
     try {
+      const messageEntity = this.messageRepo.create(message);
       await this.messageRepo.save(messageEntity);
     } catch (error) {
-      console.error('Error while trying to persist message.', error);
+      // Note: it is usually better to surface errors for visibility rather to just logging and swallowing them
+      console.error('Error while trying to persist message: ', error);
     }
     return message;
   }
@@ -37,7 +35,7 @@ export class AppService {
       console.debug(messages);
       return messages;
     } catch (error) {
-      console.error('Error occurred while trying to get messages', error);
+      console.error('Error occurred while trying to get messages: ', error);
       return [];
     }
   }

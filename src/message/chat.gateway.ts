@@ -5,11 +5,11 @@ import {
   OnGatewayConnection,
   OnGatewayDisconnect,
 } from '@nestjs/websockets';
-import { AppService } from './app.service';
+import { MessageService } from './message.service';
 
 @WebSocketGateway()
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
-  constructor(private readonly appService: AppService) {
+  constructor(private readonly appService: MessageService) {
     this.users = 0;
   }
 

@@ -6,19 +6,15 @@ import {
   Post,
   Render,
 } from '@nestjs/common';
-import { AppService } from './app.service';
+import { MessageService } from './message.service';
 
 @Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class MessageController {
+  constructor(private readonly appService: MessageService) {}
 
   @Get()
-  @Render('message-form')
-  root() {
-    return {
-      title: this.appService.welcome(),
-      messages: this.appService.getMessages(),
-    };
+  root(): { pong: string} {
+    return { pong: 'hello world' };
   }
 
   @Post('form')

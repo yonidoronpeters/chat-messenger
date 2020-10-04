@@ -3,7 +3,3 @@ interface MsgDto {
   text: string;
   datetime: Date;
 }
-
-interface UserDto {
-  name: string;
-}

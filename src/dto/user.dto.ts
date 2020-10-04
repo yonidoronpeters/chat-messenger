@@ -1,0 +1,3 @@
+interface UserDto {
+  name: string;
+}
